@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 ##############
 # Load in data file and construct dataframe
 fpath = '../DATA/Sonde3_20250812220024064561.txt'
-df = pd.read_csv(fpath, delim_whitespace=True, header=3, encoding='latin-1') 
+df = pd.read_csv(fpath, sep='\s+', header=3, encoding='latin-1') 
 df.columns = ['Time (sec)','Time (UTC)','P (hPa)','T (DegC)','Hu (%)','Ws (m/s)','Wd (Deg)','Geopot (m)','Dewp (DegC)']
 
 # Trim off end rows
@@ -56,7 +56,7 @@ df2_32 = df2_3[2001:4000]
 ##############
 # Temperature
 fig = plt.figure()
-plt.style.use('rm_technical')
+plt.style.use('seaborn-v0_8')
 plt.plot(df2_11['thermistor_temp_c'],df2_11['baro_pressure_hpa'], label='Drone S1'); 
 plt.plot(df2_31['thermistor_temp_c'],df2_31['baro_pressure_hpa'], label='Drone S3'); 
 plt.plot(df['T (DegC)'],df['P (hPa)'], label='Sonde')
@@ -86,7 +86,7 @@ plt.title('RH: Flight-1',fontname='Flecha Bronzea M')
 ##############
 # Temperature
 fig = plt.figure()
-plt.style.use('rm_technical')
+plt.style.use('seaborn-v0_8')
 plt.plot(df2_12['thermistor_temp_c'],df2_12['baro_pressure_hpa'], label='Drone S1'); 
 plt.plot(df2_32['thermistor_temp_c'],df2_32['baro_pressure_hpa'], label='Drone S3'); 
 plt.plot(df['T (DegC)'],df['P (hPa)'], label='Sonde')
@@ -113,7 +113,7 @@ plt.title('RH: Flight-2',fontname='Flecha Bronzea M')
 
 # Plotting all three temperatures for flights
 fig = plt.figure()
-plt.style.use('rm_technical')
+plt.style.use('seaborn-v0_8')
 plt.plot(df2_32['sht_temp_c'],df2_32['baro_pressure_hpa'], label='S3-sht')
 plt.plot(df2_32['baro_temp_c'],df2_32['baro_pressure_hpa'], label='S3-baro')
 plt.plot(df2_32['thermistor_temp_c'],df2_32['baro_pressure_hpa'], label='S3-thermistor')

@@ -48,7 +48,7 @@ df8_3 = df8[df8['sensorIndex'] == 3]
 
 # Make temperature compare plot
 fig = plt.figure()
-plt.style.use('rm_technical')
+plt.style.use('seaborn-v0_8')
 plt.plot(df1_3['thermistor_temp_c'],df1_3['baro_pressure_hpa'], label='1 m/s');
 plt.plot(df3_3['thermistor_temp_c'],df3_3['baro_pressure_hpa'], label='3 m/s');
 plt.plot(df5_3['thermistor_temp_c'],df5_3['baro_pressure_hpa'], label='5 m/s');

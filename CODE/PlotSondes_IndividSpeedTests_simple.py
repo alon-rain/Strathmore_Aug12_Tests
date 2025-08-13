@@ -26,7 +26,7 @@ import numpy as np
 import pandas as pd
 import math
 import matplotlib
-matplotlib.use('TkAgg')  # Use TkAgg backend for display
+matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 
 # Set drone-speed to plot
@@ -68,7 +68,7 @@ dfd_3 = dfd[dfd['sensorIndex'] == 3]
 # Make Plot
 ##############
 # Temperature
-fig = plt.figure()
+fig = plt.figure(figsize=(10, 8))
 plt.style.use('seaborn-v0_8')
 plt.plot(dfd_1['thermistor_temp_c'],dfd_1['baro_pressure_hpa'], label='Drone S1'); 
 plt.plot(dfd_3['thermistor_temp_c'],dfd_3['baro_pressure_hpa'], label='Drone S3'); 
@@ -81,10 +81,10 @@ plt.xlabel('Temperature (DegC)')
 plt.ylabel('Pressure (hPa)')
 plt.title(f'Temperature: Drone Speed {speed} m/s')
 plt.savefig(f'temperature_speed_{speed}ms.png', dpi=300, bbox_inches='tight')
-plt.show()
+plt.close()
 
 # Humidity
-fig = plt.figure()
+fig = plt.figure(figsize=(10, 8))
 plt.plot(dfd_1['rh_percent'],dfd_1['baro_pressure_hpa'], label='Drone S1');
 plt.plot(dfd_3['rh_percent'],dfd_3['baro_pressure_hpa'], label='Drone S3');  
 plt.plot(df['Hu (%)'],df['P (hPa)'], label='Sonde')
@@ -96,4 +96,6 @@ plt.xlabel('Relative Humidity (%)')
 plt.ylabel('Pressure (hPa)')
 plt.title(f'RH: Drone Speed {speed} m/s')
 plt.savefig(f'humidity_speed_{speed}ms.png', dpi=300, bbox_inches='tight')
-plt.show()
+plt.close()
+
+print(f"Plots saved as temperature_speed_{speed}ms.png and humidity_speed_{speed}ms.png")
